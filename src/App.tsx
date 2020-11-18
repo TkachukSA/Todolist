@@ -138,6 +138,23 @@ function App() {
         setTasks({...tasks, [NewTodolistId]: []})
     }
 
+    function changeTaskTitle(taskID: string, title: string, todolistID: string) {
+        const todolistTasks = tasks[todolistID]
+        const task = todolistTasks.find(task => task.id === taskID)
+        if (task) {
+            task.title = title
+            setTasks({...tasks})
+        }
+    }
+    function changeTodolistTitle(title:string, todolistID: string) {
+        const todolist = todolists.find(t => t.id === todolistID)
+        if (todolist) {
+            todolist.title = title
+            setTodolists([...todolists])
+        }
+
+    }
+
 
     return (
         <div className="App">
@@ -153,6 +170,8 @@ function App() {
                     }
                  return (
                     <Todolist
+                        changeTodolistTitle={changeTodolistTitle}
+                        changeTaskTitle={changeTaskTitle}
                         removeTodolist={removeTodolist}
                         key={tl.id}
                         id={tl.id}

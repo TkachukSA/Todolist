@@ -20,6 +20,8 @@ type PropsType = {
     removeTask: (askID: string, todolistID: string) => void
     changeFilter: (newFilterValue: FilterValuesType, todolistID: string) => void
     changeTaskstatus: (taskID: string, isDone: boolean, todolistID: string) => void
+    changeTaskTitle: (taskID: string, title: string, todolistID: string)=>void
+    changeTodolistTitle: (title:string, todolistID: string)=> void
 }
 
 export function Todolist(props: PropsType) {
@@ -31,13 +33,17 @@ export function Todolist(props: PropsType) {
         const cangeTaskstatus = (e: ChangeEvent<HTMLInputElement>) => {
             props.changeTaskstatus(task.id, e.currentTarget.checked, props.id)
         }
+        const changeTaskStatus=(newValue: string)=>{
+            props.changeTaskTitle(task.id, newValue, props.id)
+        }
+
 
         return <li className={task.isDone ? "is-done" : ""}
                    key={task.id}><input
                    onChange={cangeTaskstatus}
                    type="checkbox"
                    checked={task.isDone}/>
-                   <EdiTableSpan title={task.title}/>
+                   <EdiTableSpan title={task.title} changeValue={changeTaskStatus}/>
             <button onClick={RemoveTask}>x</button>
         </li>
     })
@@ -47,10 +53,13 @@ export function Todolist(props: PropsType) {
     const OnActiveClickHander = () => {props.changeFilter("active", props.id)}
     const OnComplatedClickHander = () => {props.changeFilter("completed", props.id)}
 
+    const changeTodolistTitle=(title: string)=>{props.changeTodolistTitle(title, props.id)}
+
     return <div>
 
 
-        <h3>{props.title}
+        <h3>
+           <EdiTableSpan title={props.title} changeValue={changeTodolistTitle}/>
             <button onClick={() => {props.removeTodolist(props.id)}}>x</button>
         </h3>
 
