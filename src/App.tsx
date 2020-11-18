@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {TaskType, Todolist} from './Todolist';
 import {v1} from "uuid";
+import AddItemForm from "./AddImportForm";
 
 export type FilterValuesType = "all" | "active" | "completed"
 
@@ -126,8 +127,21 @@ function App() {
 // changeFilter передадим в тодолист для дальнейшей сортировки по кнопке
     /*    removeTask поступает в пропсы который позволяет перересоваться тодолисту*/
 
+    function AddTodolist(title: string){
+        const NewTodolistId = v1()
+        const NewTodolist: toDoListType ={
+            title: title,
+            id: NewTodolistId,
+            filter: "all"
+        }
+        setTodolists([...todolists, NewTodolist])
+        setTasks({...tasks, [NewTodolistId]: []})
+    }
+
+
     return (
         <div className="App">
+            <AddItemForm addItem={AddTodolist}/>
             {
                 todolists.map(tl => {
                     let tasksForTodolist = tasks[tl.id]
