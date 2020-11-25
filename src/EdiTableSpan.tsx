@@ -1,4 +1,5 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
+import {TextField} from "@material-ui/core";
 
 type EdiTableSpanType={
     title: string
@@ -14,7 +15,10 @@ function EdiTableSpan(props: EdiTableSpanType){
 
     return (
         editMode
+/*
             ? <input onBlur={deActivatedEditMode} autoFocus={true} value={title} onChange={onChangeTitle}/>
+*/
+            ?<TextField onBlur={deActivatedEditMode} autoFocus={true} value={title} onChange={onChangeTitle} variant={"outlined"}/>
             : <span onDoubleClick={activatedEditMode}>{props.title}</span>
 
     )
