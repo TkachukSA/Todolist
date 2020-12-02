@@ -8,7 +8,7 @@ import {Menu} from "@material-ui/icons";
 
 export type FilterValuesType = "all" | "active" | "completed"
 
-type toDoListType = {
+export type toDoListType = {
     id: string
     title: string
     filter: FilterValuesType
@@ -27,7 +27,6 @@ function App() {
         {id: todolistsID1, title: "wont to bye", filter: "all"},
         {id: todolistsID2, title: "wont to milk", filter: "all"},
     ])
-
     const [tasks, setTasks] = useState<TaskStateType>({
         [todolistsID1]: [
             {id: v1(), title: "HTML&CSS", isDone: true},
@@ -40,33 +39,7 @@ function App() {
             {id: v1(), title: "Bread", isDone: true},
             {id: v1(), title: "eggs", isDone: false},
             {id: v1(), title: "popi", isDone: false},
-        ]
-
-    })
-
-
-    /*
-        // принимает отфильтрованные таски setTasks из функции removeTask
-    // tasks - исходный массив = который проресовывется сразуже на странице.
-    // setTasks = функция фильтр(котоая меняет данные)
-    // useState принимет стартовое значение и запоминает, что его нужно перересовать. принимает данные из
-        const [tasks, setTasks] = useState<Array<TaskType>>([
-            {id: v1(), title: "HTML&CSS", isDone: true},
-            {id: v1(), title: "JS", isDone: true},
-            {id: v1(), title: "ReactJS", isDone: false},
-            {id: v1(), title: "ReactJS", isDone: false},
-            {id: v1(), title: "ReactJS", isDone: false}
-        ])
-
-    // отфильтрованные значения юстает. и со старта мы говорим олл(показать все значения)
-        const [filter, setFilter] = useState<FilterValuesType>("all")
-
-        */
-
-// при нажатии на кнопку онклик, кнопка выдает айди таска на котрый было нажатие. в функцию фильтр приходит ойди с номером нажатой клавиши.//
-    // если айди в таке(массив) будет равен айди из онклик , функция фильтр проресует новую таку, но без удаленного элемента//
-// пропусти те таки ойди которой равны тру а которые не равны нужно удалть
-    // отфильтрованные таски отправляет в функцтю setTasks
+        ]})
 
     function removeTask(taskID: string, todolistID: string) {
         const todolistTasks = tasks[todolistID]
@@ -74,8 +47,6 @@ function App() {
         setTasks({...tasks})
     }
 
-// добавление таски  newTask, ...tasks] копирует в начало списка новую таску
-    // закидываем в тудулист пропсами
     function addTask(title: string, todolistID: string) {
         const newTask: TaskType = {id: v1(), title: title, isDone: false}
         const todolistTasks = tasks[todolistID]
@@ -83,9 +54,6 @@ function App() {
         setTasks({...tasks})
     }
 
-
-//1 1. принимает значение типа = FilterValuesType
-//2. внутри функции создаем     setFilter в котрок передаем значение newFilterValue
     function changeFilter(newFilterValue: FilterValuesType, todolistID: string) {
         const todolist = todolists.find(t => t.id === todolistID)
         if (todolist) {
@@ -111,23 +79,6 @@ function App() {
         setTasks({...tasks})
     }
 
-    // 1. присваеваем   tasksForTodolist значение таск целиком.
-    // 2  если у таски значение isDone = фалсе , то таска попадет в результирующий массив
-    // 3   если у таски значение isDone = тру , то таска попадет в результирующий массив
-    // tasksForTodolist прокидываем в tasks что бы туду лист получио не все данные, а только те, которые отфильторванны
-    /*
-        let tasksForTodolist = tasks
-        if (filter === "active") {
-            tasksForTodolist = tasks.filter(task => task.isDone === false)
-        }
-        if (filter === "completed") {
-            tasksForTodolist = tasks.filter(task => task.isDone === true)
-        }
-    */
-
-
-// changeFilter передадим в тодолист для дальнейшей сортировки по кнопке
-    /*    removeTask поступает в пропсы который позволяет перересоваться тодолисту*/
 
     function AddTodolist(title: string) {
         const NewTodolistId = v1()
