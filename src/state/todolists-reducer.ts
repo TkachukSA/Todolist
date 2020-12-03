@@ -22,13 +22,11 @@ export type ChangeTodolistTitleActionType ={
     title: string
     id: string
 }
-
 export type ChangeTodolistFilterActionType ={
     type: 'CHANGE-TODOLIST-FILTER'
     filter: FilterValuesType
     id: string
 }
-
 
 type ActionsType = ChangeTodolistFilterActionType | ChangeTodolistTitleActionType | AddTodolistActionType |RemoveTodolistActionType
 
