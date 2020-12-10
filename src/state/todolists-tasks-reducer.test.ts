@@ -32,6 +32,7 @@ test('property with todolistId should be deleted', () => {
         ]
     };
 
+
     const action = RemoveTodolistAS("todolistId2");
 
     const endState = tasksReducer(startState, action)
