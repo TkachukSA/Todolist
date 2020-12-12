@@ -36,10 +36,7 @@ test('correct todolist should be added', () => {
         {id: todolistId1, title: "What to learn", filter: "all"},
         {id: todolistId2, title: "What to buy", filter: "all"}
     ]
-   /* const action: AddTodolistActionType = {
-        type: 'ADD-TODOLIST' as const,
-        title: newTodolistTitle
-    }*/
+
 
     const endState = TodolistsReducer(startState, AddTodolistAS(newTodolistTitle))
 
