@@ -6,7 +6,7 @@ type AddItemFormType={
     addItem: (title:string)=> void
 }
 function AddItemForm(props: AddItemFormType){
-    const [title, setTitle] = useState<string>("")
+    const [title, setTitle] = useState<string>(" ")
     const [error, setError] = useState<string | null>(null)
 
     const OnKeyPressAddItem = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -17,26 +17,26 @@ function AddItemForm(props: AddItemFormType){
         setTitle(e.currentTarget.value)
     }
     const addItem = () => {
-        const trimitedTitle = title.trim() // что бьы не вводиласть пустая строка
-        if (trimitedTitle !== "") {
-            props.addItem(trimitedTitle)
+        debugger
+        const trimmedTitle = title.trim()
+        if (trimmedTitle !== "") {
+            props.addItem(trimmedTitle)
+
         } else {
-            setError("Title is required")
+            setError('Title is required!')
         }
         setTitle("")
     }
 return (
     <div>
-        {/*<input value={title}
-               onChange={OnTitleChangeHandler}
-               onKeyPress={OnKeyPressAddItem}
-               className={error ? "error" : ""}/>*/}
+
 
 <TextField
-    error={!!error}
     label={"Title"}
     helperText={error}
+    error={!!error}
     variant={"outlined"}
+    value={title}
     onChange={OnTitleChangeHandler}
     onKeyPress={OnKeyPressAddItem}
     className={error ? "error" : ""}/>
