@@ -1,11 +1,6 @@
-import React from "react";
-import {StateType} from "./user-reducer";
-import {FilterValuesType, TasksStateType, toDoListType} from "../AppWithReducers";
+
 import {v1} from "uuid";
-import {Simulate} from "react-dom/test-utils";
-
-
-
+import {FilterValuesType, toDoListType} from "../AppWithRedux";
 
 
 

@@ -1,3 +1,4 @@
+/*
 import React, {useReducer, useState} from 'react';
 import './App.css';
 import {TaskType, Todolist} from './Todolist';
@@ -130,9 +131,9 @@ function AppWithReducers() {
                             return (<Grid item>
                                     <Paper style={{padding: "10px"}}>
                                     <Todolist
-                                        changeTodolistTitle={changeTodolistTitle}
+                                        _changeTodolistTitle={changeTodolistTitle}
                                         changeTaskTitle={changeTaskTitle}
-                                        removeTodolist={removeTodolist}
+                                        _removeTodolist={removeTodolist}
                                         key={tl.id}
                                         id={tl.id}
                                         title={tl.title}
@@ -156,3 +157,4 @@ function AppWithReducers() {
                     }
 
                     export default AppWithReducers;
+*/

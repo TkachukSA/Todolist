@@ -6,6 +6,7 @@ type EdiTableSpanType={
     changeValue: (newValue: string)=> void
 }
 function EdiTableSpan(props: EdiTableSpanType){
+    console.log("edit tabel span")
     const [editMode, setEditMode]=useState<boolean>(false)
     const [title, setTitle] = useState<string>(props.title)
 

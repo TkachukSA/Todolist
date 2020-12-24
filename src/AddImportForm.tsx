@@ -1,11 +1,12 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {Button, IconButton, TextField} from "@material-ui/core";
-import {AddBox, Delete, TextFields} from "@material-ui/icons";
+import {AddBox} from "@material-ui/icons";
 
 type AddItemFormType={
     addItem: (title:string)=> void
 }
-function AddItemForm(props: AddItemFormType){
+const AddItemForm=React.memo((props: AddItemFormType)=>{
+    console.log('AddItemForm')
     const [title, setTitle] = useState<string>(" ")
     const [error, setError] = useState<string | null>(null)
 
@@ -13,11 +14,12 @@ function AddItemForm(props: AddItemFormType){
         if (e.key === "Enter") addItem()
     }
     const OnTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setError(null)
+        if(error !== null){
+            setError(null)
+        }
         setTitle(e.currentTarget.value)
     }
     const addItem = () => {
-        debugger
         const trimmedTitle = title.trim()
         if (trimmedTitle !== "") {
             props.addItem(trimmedTitle)
@@ -48,5 +50,5 @@ return (
         <Button onClick={addItem} variant="contained" color="inherit" size="small">x</Button>
     {/* //   {error && <div className={"error-message"}>{error}</div>}*/}
     </div>)
-}
+})
 export default AddItemForm
