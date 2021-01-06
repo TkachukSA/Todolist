@@ -42,7 +42,6 @@ function AppWithRedux() {
     let dispatch= useDispatch()
 
 
-
     const removeTask=useCallback((taskID: string, todolistID: string)=> {
         const action = RemoveTaskAC(taskID, todolistID)
         dispatch(action)},[dispatch])
