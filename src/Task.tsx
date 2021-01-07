@@ -4,7 +4,7 @@ import EdiTableSpan from "./EdiTableSpan";
 import {Delete} from "@material-ui/icons";
 import {TaskType} from "./Todolist";
 
-type TaskPropsType = {
+export type TaskPropsType = {
     task: TaskType
     changeTaskstatus: (taskID: string, isDone: boolean, todolistID: string) => void
     removeTask: (askID: string, todolistID: string) => void

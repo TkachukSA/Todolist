@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import AddItemForm from "./AddImportForm";
+import AddItemForm from "./AddItemForm";
 import EdiTableSpan from "./EdiTableSpan";
 import {Button, IconButton} from "@material-ui/core";
 import {Delete} from "@material-ui/icons";
@@ -69,10 +69,10 @@ export const Todolist: React.FC<PropsType>=React.memo(({
     const removeTodolist = useCallback(() => {_removeTodolist(id)},[_removeTodolist, id])
     const changeTodolistTitle = useCallback((title: string) => {_changeTodolistTitle(title, id)},[_changeTodolistTitle, id])
 
-    const OnAllClickHander = useCallback(() => {changeFilter("all", id)},[])
-    const OnActiveClickHander = useCallback(() => {changeFilter("active", id)},[])
+    const OnAllClickHander = useCallback(() => {changeFilter("all", id)},[changeFilter, id])
+    const OnActiveClickHander = useCallback(() => {changeFilter("active", id)},[changeFilter, id])
 
-    const OnComplatedClickHander = useCallback(() => {changeFilter("completed", id)},[])
+    const OnComplatedClickHander = useCallback(() => {changeFilter("completed", id)},[changeFilter, id])
 
 
 
